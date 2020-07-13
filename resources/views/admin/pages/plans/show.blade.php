@@ -9,6 +9,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
+
             <ul>
                 <li>
                     <strong>Nome: </strong> {{$plan->name}}
@@ -25,6 +26,7 @@
 
             </ul>
 
+            @include('admin.includes.alerts')
             <form action="{{ route('plans.destroy',['url' => $plan->url]) }}" method="POST">
                 @csrf
                 @method('DELETE')
