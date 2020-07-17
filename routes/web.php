@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function () {
 
     /**
      * Plan  x Profile
@@ -77,6 +77,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/', 'PlanController@index')->name('admin.index');
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Site\SiteController@index')->name('site.home');
+
+/**
+ * Auth Routes
+ */
+Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
